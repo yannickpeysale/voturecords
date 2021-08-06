@@ -7,15 +7,30 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ProductList: View {
+    var products: [ProductListModel]
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        LazyVGrid(
+            columns: [
+                GridItem(.flexible(minimum: 20, maximum: 130)),
+                GridItem(.flexible(minimum: 20, maximum: 130)),
+                GridItem(.flexible(minimum: 20, maximum: 130))
+            ],
+            alignment: .leading,
+            spacing: 20,
+            pinnedViews: /*@START_MENU_TOKEN@*/[]/*@END_MENU_TOKEN@*/,
+            content: {
+                Text("Placeholder")
+                Text("Placeholder")
+                Text("Placeholder")
+            }
+        )
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ProductList()
     }
 }

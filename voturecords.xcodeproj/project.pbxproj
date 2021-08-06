@@ -3,16 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		782A63642506980400C82C0B /* ProductAPIRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A63632506980400C82C0B /* ProductAPIRetriever.swift */; };
+		782A63672507D73800C82C0B /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A63662507D73800C82C0B /* ProductListViewModel.swift */; };
+		7874AB8C26BC6D0D0062FCBA /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB8B26BC6D0D0062FCBA /* ProductDetails.swift */; };
+		7874AB8F26BC731C0062FCBA /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB8E26BC731C0062FCBA /* NewsView.swift */; };
+		7874AB9126BC74D40062FCBA /* MockProductAPIRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9026BC74D40062FCBA /* MockProductAPIRetriever.swift */; };
+		7874AB9326BC7A400062FCBA /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9226BC7A400062FCBA /* ProductImageView.swift */; };
+		7874AB9626BC7ADF0062FCBA /* ProductImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9526BC7ADF0062FCBA /* ProductImageViewModel.swift */; };
 		78F1569825063BD400B54E9A /* voturecordsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1569725063BD400B54E9A /* voturecordsApp.swift */; };
-		78F1569A25063BD400B54E9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1569925063BD400B54E9A /* ContentView.swift */; };
+		78F1569A25063BD400B54E9A /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1569925063BD400B54E9A /* ProductList.swift */; };
 		78F1569C25063BD600B54E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F1569B25063BD600B54E9A /* Assets.xcassets */; };
 		78F1569F25063BD600B54E9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F1569E25063BD600B54E9A /* Preview Assets.xcassets */; };
 		78F156AA25063BD600B54E9A /* voturecordsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F156A925063BD600B54E9A /* voturecordsTests.swift */; };
 		78F156B525063BD600B54E9A /* voturecordsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F156B425063BD600B54E9A /* voturecordsUITests.swift */; };
+		78F156C425065E0500B54E9A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F156C325065E0500B54E9A /* Product.swift */; };
+		78F156C625065FA900B54E9A /* ProductImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F156C525065FA900B54E9A /* ProductImage.swift */; };
+		88637DDA909591E2192E652F /* Pods_voturecords.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3044F7A8C828E1018BAD24CA /* Pods_voturecords.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,9 +43,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3044F7A8C828E1018BAD24CA /* Pods_voturecords.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_voturecords.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		782A63632506980400C82C0B /* ProductAPIRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAPIRetriever.swift; sourceTree = "<group>"; };
+		782A63662507D73800C82C0B /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
+		7874AB8B26BC6D0D0062FCBA /* ProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetails.swift; sourceTree = "<group>"; };
+		7874AB8E26BC731C0062FCBA /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		7874AB9026BC74D40062FCBA /* MockProductAPIRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductAPIRetriever.swift; sourceTree = "<group>"; };
+		7874AB9226BC7A400062FCBA /* ProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
+		7874AB9526BC7ADF0062FCBA /* ProductImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageViewModel.swift; sourceTree = "<group>"; };
 		78F1569425063BD400B54E9A /* voturecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = voturecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F1569725063BD400B54E9A /* voturecordsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voturecordsApp.swift; sourceTree = "<group>"; };
-		78F1569925063BD400B54E9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		78F1569925063BD400B54E9A /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
 		78F1569B25063BD600B54E9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78F1569E25063BD600B54E9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		78F156A025063BD600B54E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +63,10 @@
 		78F156B025063BD600B54E9A /* voturecordsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = voturecordsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F156B425063BD600B54E9A /* voturecordsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voturecordsUITests.swift; sourceTree = "<group>"; };
 		78F156B625063BD600B54E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78F156C325065E0500B54E9A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		78F156C525065FA900B54E9A /* ProductImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImage.swift; sourceTree = "<group>"; };
+		927F9F165EB133A97AB70E7C /* Pods-voturecords.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voturecords.debug.xcconfig"; path = "Target Support Files/Pods-voturecords/Pods-voturecords.debug.xcconfig"; sourceTree = "<group>"; };
+		A3DA94FDBD2D22FE586DA27C /* Pods-voturecords.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voturecords.release.xcconfig"; path = "Target Support Files/Pods-voturecords/Pods-voturecords.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88637DDA909591E2192E652F /* Pods_voturecords.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +95,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430FE705D1E430476047147E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				927F9F165EB133A97AB70E7C /* Pods-voturecords.debug.xcconfig */,
+				A3DA94FDBD2D22FE586DA27C /* Pods-voturecords.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		782A6362250697C900C82C0B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				782A63632506980400C82C0B /* ProductAPIRetriever.swift */,
+				7874AB9026BC74D40062FCBA /* MockProductAPIRetriever.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		782A63652507D72100C82C0B /* ProductList */ = {
+			isa = PBXGroup;
+			children = (
+				78F1569925063BD400B54E9A /* ProductList.swift */,
+				782A63662507D73800C82C0B /* ProductListViewModel.swift */,
+			);
+			path = ProductList;
+			sourceTree = "<group>";
+		};
+		7874AB8A26BC6CF70062FCBA /* ProductDetails */ = {
+			isa = PBXGroup;
+			children = (
+				7874AB8B26BC6D0D0062FCBA /* ProductDetails.swift */,
+			);
+			path = ProductDetails;
+			sourceTree = "<group>";
+		};
+		7874AB8D26BC73090062FCBA /* News */ = {
+			isa = PBXGroup;
+			children = (
+				7874AB8E26BC731C0062FCBA /* NewsView.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		7874AB9426BC7A620062FCBA /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				7874AB9226BC7A400062FCBA /* ProductImageView.swift */,
+				7874AB9526BC7ADF0062FCBA /* ProductImageViewModel.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		78F1568B25063BD400B54E9A = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +154,8 @@
 				78F156A825063BD600B54E9A /* voturecordsTests */,
 				78F156B325063BD600B54E9A /* voturecordsUITests */,
 				78F1569525063BD400B54E9A /* Products */,
+				430FE705D1E430476047147E /* Pods */,
+				E2F88880918865DF896CE7CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,8 +172,13 @@
 		78F1569625063BD400B54E9A /* voturecords */ = {
 			isa = PBXGroup;
 			children = (
+				7874AB9426BC7A620062FCBA /* Image */,
+				7874AB8D26BC73090062FCBA /* News */,
+				7874AB8A26BC6CF70062FCBA /* ProductDetails */,
+				782A63652507D72100C82C0B /* ProductList */,
+				782A6362250697C900C82C0B /* Network */,
+				78F156C225063D2000B54E9A /* Models */,
 				78F1569725063BD400B54E9A /* voturecordsApp.swift */,
-				78F1569925063BD400B54E9A /* ContentView.swift */,
 				78F1569B25063BD600B54E9A /* Assets.xcassets */,
 				78F156A025063BD600B54E9A /* Info.plist */,
 				78F1569D25063BD600B54E9A /* Preview Content */,
@@ -130,6 +212,23 @@
 			path = voturecordsUITests;
 			sourceTree = "<group>";
 		};
+		78F156C225063D2000B54E9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				78F156C325065E0500B54E9A /* Product.swift */,
+				78F156C525065FA900B54E9A /* ProductImage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E2F88880918865DF896CE7CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3044F7A8C828E1018BAD24CA /* Pods_voturecords.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +236,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78F156B925063BD600B54E9A /* Build configuration list for PBXNativeTarget "voturecords" */;
 			buildPhases = (
+				2D59396B1869E38224E88860 /* [CP] Check Pods Manifest.lock */,
 				78F1569025063BD400B54E9A /* Sources */,
 				78F1569125063BD400B54E9A /* Frameworks */,
 				78F1569225063BD400B54E9A /* Resources */,
+				6E372AC9074CD3A64E99F947 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,13 +355,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2D59396B1869E38224E88860 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-voturecords-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E372AC9074CD3A64E99F947 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-voturecords/Pods-voturecords-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-voturecords/Pods-voturecords-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-voturecords/Pods-voturecords-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		78F1569025063BD400B54E9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78F1569A25063BD400B54E9A /* ContentView.swift in Sources */,
+				7874AB8C26BC6D0D0062FCBA /* ProductDetails.swift in Sources */,
+				78F1569A25063BD400B54E9A /* ProductList.swift in Sources */,
+				7874AB8F26BC731C0062FCBA /* NewsView.swift in Sources */,
+				782A63672507D73800C82C0B /* ProductListViewModel.swift in Sources */,
+				78F156C625065FA900B54E9A /* ProductImage.swift in Sources */,
+				7874AB9126BC74D40062FCBA /* MockProductAPIRetriever.swift in Sources */,
 				78F1569825063BD400B54E9A /* voturecordsApp.swift in Sources */,
+				7874AB9326BC7A400062FCBA /* ProductImageView.swift in Sources */,
+				782A63642506980400C82C0B /* ProductAPIRetriever.swift in Sources */,
+				78F156C425065E0500B54E9A /* Product.swift in Sources */,
+				7874AB9626BC7ADF0062FCBA /* ProductImageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +566,7 @@
 		};
 		78F156BA25063BD600B54E9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 927F9F165EB133A97AB70E7C /* Pods-voturecords.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -435,6 +588,7 @@
 		};
 		78F156BB25063BD600B54E9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3DA94FDBD2D22FE586DA27C /* Pods-voturecords.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
