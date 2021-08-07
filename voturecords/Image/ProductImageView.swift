@@ -26,8 +26,13 @@ struct ProductImageView: View {
             loadedImage
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-        default:
-            Image("ingrina")
+        case .error:
+            Button(action: {
+                imageViewModel.downloadImage()
+            }) {
+                Image(systemName: "arrow.clockwise")
+            }
+            .frame(width: 40, height: 40, alignment: .center)
         }
     }
 }

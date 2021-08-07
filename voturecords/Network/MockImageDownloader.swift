@@ -11,5 +11,6 @@ import UIKit
 public class MockImageDownloader: ImageDownloaderProtocol {
     public func downloadImage(from url: URL, completion: @escaping (Data?, Error?) -> ()) {
         completion(UIImage(named: "ingrina")?.pngData(), nil)
+        //completion(nil, APIError.emptyAnswer)
     }
 }
