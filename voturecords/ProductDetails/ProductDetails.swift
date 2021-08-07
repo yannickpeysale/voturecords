@@ -13,9 +13,7 @@ struct ProductDetails: View {
     var body: some View {
         NavigationView() {
             VStack {
-                Image("ingrina")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                ProductImageView(image: product.images.first!)
                 Text(product.shortDescription)
                 Text("\(product.price)€")
                 

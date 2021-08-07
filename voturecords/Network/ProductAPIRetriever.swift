@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ProductRetrieverError: Error {
+public enum APIError: Error {
     case invalidURL
     case httpError(String)
     case parsingError
@@ -21,11 +21,11 @@ public protocol ProductAPIRetrieverProtocol {
 public class ProductAPIRetriever: NSObject, ProductAPIRetrieverProtocol {
     
     public func requestProducts(completion: @escaping((Error?, [Product]) -> Void)) throws {
-        let session = URLSession(configuration: URLSessionConfiguration.default)
+        let session = URLSession.shared
         
         guard let productsURL = URL(string: "https://voturecords.com//wp-json/wc/v3/products") else {
             NSLog("Couldn't build url for products")
-            throw ProductRetrieverError.invalidURL
+            throw APIError.invalidURL
         }
         
         let username = "ck_b2c22b84112f8980e5a94dc7131a1166b469d5a4"
@@ -47,14 +47,14 @@ public class ProductAPIRetriever: NSObject, ProductAPIRetrieverProtocol {
             }
             guard let data = data else {
                 NSLog("Empty answer")
-                completion(ProductRetrieverError.emptyAnswer, [])
+                completion(APIError.emptyAnswer, [])
                 return
             }
             NSLog(String(data: data, encoding: .utf8) ?? "Answer has incorrect encoding")
             let jsonDecoder = JSONDecoder()
             guard let products = try? jsonDecoder.decode([Product].self, from: data) else {
                 NSLog("Couldn't parse answer, data has wrong format")
-                completion(ProductRetrieverError.parsingError, [])
+                completion(APIError.parsingError, [])
                 return
             }
             

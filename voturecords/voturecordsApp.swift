@@ -12,14 +12,29 @@ import Swinject
 struct voturecordsApp: App {
     static let container = Container()
     static var productRetriever: ProductAPIRetrieverProtocol?
+    static var imageDownloader: ImageDownloaderProtocol?
     
     init() {
         voturecordsApp.container.register(ProductAPIRetrieverProtocol.self, factory: { _ in
-            if voturecordsApp.productRetriever == nil {
-                voturecordsApp.productRetriever = MockProductAPIRetriever()
+            if let productRetriever = voturecordsApp.productRetriever {
+                return productRetriever
+            } else {
+                let productRetriever = ProductAPIRetriever()
+                voturecordsApp.productRetriever = productRetriever
+                
+                return productRetriever
             }
-            
-            return voturecordsApp.productRetriever!
+        })
+        
+        voturecordsApp.container.register(ImageDownloaderProtocol.self, factory: { _ in
+            if let imageDownloader = voturecordsApp.imageDownloader  {
+                return imageDownloader
+            } else {
+                let imageDownloader = ImageDownloader()
+                voturecordsApp.imageDownloader = imageDownloader
+                
+                return imageDownloader
+            }
         })
     }
     

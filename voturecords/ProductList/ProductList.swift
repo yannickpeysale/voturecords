@@ -18,6 +18,7 @@ struct ProductCell: View {
         HStack(alignment: .center,
                spacing: 10) {
             ProductImageView(image: product.images.first!)
+                .imageScale(.small)
             /*Image("ingrina")
                 //.renderingMode(.original)
                 .resizable()

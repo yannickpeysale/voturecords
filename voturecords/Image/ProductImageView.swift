@@ -14,6 +14,7 @@ struct ProductImageView: View {
     public init(image: ProductImage) {
         self.image = image
         self.imageViewModel = ProductImageViewModel(image: image)
+        self.imageViewModel.downloadImage()
     }
     
     var body: some View {
@@ -21,6 +22,10 @@ struct ProductImageView: View {
         case .loading:
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
+        case .loaded(let loadedImage):
+            loadedImage
+                .resizable()
+                .aspectRatio(contentMode: .fit)
         default:
             Image("ingrina")
         }

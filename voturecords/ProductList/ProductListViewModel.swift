@@ -8,7 +8,7 @@
 import Foundation
 
 public class ProductListViewModel: ObservableObject {
-    var productAPIRetriever: ProductAPIRetrieverProtocol
+    let productAPIRetriever: ProductAPIRetrieverProtocol
     @Published var products: [Product] = []
     
     init() {
