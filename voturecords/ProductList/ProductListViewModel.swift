@@ -7,9 +7,16 @@
 
 import Foundation
 
+public enum ProductListState {
+    case loading
+    case loaded([Product])
+    case error
+}
+
 public class ProductListViewModel: ObservableObject {
     let productAPIRetriever: ProductAPIRetrieverProtocol
-    @Published var products: [Product] = []
+    //@Published var products: [Product] = []
+    @Published var state: ProductListState = .loading
     
     init() {
         guard let retriever = voturecordsApp.container.resolve(ProductAPIRetrieverProtocol.self) else {
@@ -24,10 +31,11 @@ public class ProductListViewModel: ObservableObject {
         do {
             try self.productAPIRetriever.requestProducts(completion: { [weak self] error, products in
                 guard error == nil else {
+                    self?.state = .error
                     return
                 }
                 DispatchQueue.main.async {
-                    self?.products = products
+                    self?.state = .loaded(products)
                 }
             })
         } catch {

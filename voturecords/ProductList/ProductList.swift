@@ -19,15 +19,10 @@ struct ProductCell: View {
                spacing: 10) {
             ProductImageView(image: product.images.first!)
                 .imageScale(.small)
-            /*Image("ingrina")
-                //.renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)*/
             Text(product.name)
-                .bold()
             Spacer()
             Text("\(product.price)€")
+                .fontWeight(.light)
         }
     }
 }
@@ -40,17 +35,36 @@ struct ProductList: View, ProductListProtocol {
     }
     
     var body: some View {
-        NavigationView() {
-            ScrollView() {
-                VStack() {
-                    ForEach((productModels.products), id: \.self) { product in
-                        NavigationLink(destination: ProductDetails(product: product)) {
-                            ProductCell(product: product)
-                        }
-                    }
-                }.padding()
+        switch productModels.state {
+        case .loading:
+            VStack() {
+                Text("Loading products...")
+                    .fontWeight(.light)
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
             }
-            .navigationTitle("Products")
+            
+        case .loaded(let products):
+            NavigationView() {
+                ScrollView() {
+                    VStack() {
+                        ForEach((products), id: \.self) { product in
+                            NavigationLink(destination: ProductDetails(product: product)) {
+                                ProductCell(product: product)
+                            }
+                        }
+                    }.padding()
+                }
+                .navigationTitle("Products")
+            }
+            
+        case .error:
+            Button(action: {
+                productModels.requestProducts()
+            }) {
+                Image(systemName: "arrow.clockwise")
+            }
+            .frame(width: 40, height: 40, alignment: .center)
         }
     }
 }
