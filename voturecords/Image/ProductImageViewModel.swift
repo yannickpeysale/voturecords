@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import SwiftUI
 import UIKit
 
 /// The loading state of a product image
 public enum ProductImageState {
     case loading
-    case loaded(Image)
+    case loaded(UIImage)
     case error
 }
 
@@ -46,7 +45,7 @@ public class ProductImageViewModel: ObservableObject {
             }
             
             DispatchQueue.main.async {
-                self?.state = .loaded(Image(uiImage: uiImage))
+                self?.state = .loaded(uiImage)
             }
         }
     }

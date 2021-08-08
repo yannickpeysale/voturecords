@@ -15,29 +15,43 @@ public enum APIError: Error {
 }
 
 public protocol ProductAPIRetrieverProtocol {
-    func requestProducts(completion: @escaping ((Error?, [Product]) -> Void)) throws
+    func requestProducts(
+        page: Int,
+        completion: @escaping ((Error?, [Product]) -> Void)
+    ) throws
 }
 
 public class ProductAPIRetriever: NSObject, ProductAPIRetrieverProtocol {
-    
-    public func requestProducts(completion: @escaping((Error?, [Product]) -> Void)) throws {
+    // page: parameter to know which batch of products to retrieve
+    // per_page: number of products per batch
+    public func requestProducts(
+        page: Int,
+        completion: @escaping((Error?, [Product]) -> Void)
+    ) throws {
         let session = URLSession.shared
         
-        guard let productsURL = URL(string: "https://voturecords.com//wp-json/wc/v3/products") else {
-            NSLog("Couldn't build url for products")
-            throw APIError.invalidURL
-        }
+        var productsURLComponents = URLComponents(string: "https://voturecords.com//wp-json/wc/v3/products")
+        
+        productsURLComponents?.queryItems = [
+            URLQueryItem(name: "page", value: "\(page)")
+        ]
         
         let username = "ck_b2c22b84112f8980e5a94dc7131a1166b469d5a4"
         let password = "cs_9f5ed385bcbf684edec5861c8fdfbaeceff2a968"
         let loginString = String(format: "%@:%@", username, password)
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
+        
+        guard let productsURL = productsURLComponents?.url else {
+           NSLog("Couldn't build url for products")
+           throw APIError.invalidURL
+       }
 
         // create the request
         var request = URLRequest(url: productsURL)
         request.httpMethod = "GET"
         request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+        
         
         let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if let error = error {

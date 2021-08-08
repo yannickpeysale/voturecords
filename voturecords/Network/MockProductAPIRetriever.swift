@@ -9,7 +9,10 @@ import Foundation
 
 public class MockProductAPIRetriever: ProductAPIRetrieverProtocol {
     
-    public func requestProducts(completion: @escaping ((Error?, [Product]) -> Void)) throws {
+    public func requestProducts(
+        page: Int,
+        completion: @escaping ((Error?, [Product]) -> Void)
+    ) throws {
         completion(nil, [
             Product(
                 id: 11323,

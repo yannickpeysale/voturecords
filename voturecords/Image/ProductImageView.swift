@@ -10,9 +10,11 @@ import SwiftUI
 struct ProductImageView: View {
     let image: ProductImage
     @ObservedObject var imageViewModel: ProductImageViewModel
+    let shadow: Bool
     
-    public init(image: ProductImage) {
+    public init(image: ProductImage, shadow: Bool = false) {
         self.image = image
+        self.shadow = shadow
         self.imageViewModel = ProductImageViewModel(image: image)
         self.imageViewModel.downloadImage()
     }
@@ -22,10 +24,20 @@ struct ProductImageView: View {
         case .loading:
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
+            
         case .loaded(let loadedImage):
-            loadedImage
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            
+            if self.shadow {
+                Image(uiImage: loadedImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .shadow(radius: 3)
+            } else {
+                Image(uiImage: loadedImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+                
         case .error:
             Button(action: {
                 imageViewModel.downloadImage()
