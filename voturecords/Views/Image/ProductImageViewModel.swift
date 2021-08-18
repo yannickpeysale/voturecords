@@ -15,6 +15,10 @@ public enum ProductImageState {
     case error
 }
 
+/// View model for a product image
+/// - state : loading state of the image
+/// - image : object containing all the info for the image
+/// - imageDownloader : injected, allows to retrieve image info (use a MockImageDownloader for testing)
 public class ProductImageViewModel: ObservableObject {
     @Published var state: ProductImageState
     let image: ProductImage
@@ -31,6 +35,7 @@ public class ProductImageViewModel: ObservableObject {
         self.imageDownloader = imageDownloader
     }
     
+    // downloads image from the model source, and updates the state accordingly
     public func downloadImage() {
         guard let url = URL(string: self.image.src) else {
             NSLog("Couldn't build url from image src : \(self.image.src)")

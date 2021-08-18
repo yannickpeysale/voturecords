@@ -17,6 +17,7 @@ public enum APIError: Error {
 public protocol ProductAPIRetrieverProtocol {
     func requestProducts(
         page: Int,
+        category: Category?,
         completion: @escaping ((Error?, [Product]) -> Void)
     ) throws
 }
@@ -26,6 +27,7 @@ public class ProductAPIRetriever: NSObject, ProductAPIRetrieverProtocol {
     // per_page: number of products per batch
     public func requestProducts(
         page: Int,
+        category: Category?,
         completion: @escaping((Error?, [Product]) -> Void)
     ) throws {
         let session = URLSession.shared
@@ -33,14 +35,15 @@ public class ProductAPIRetriever: NSObject, ProductAPIRetrieverProtocol {
         var productsURLComponents = URLComponents(string: "https://voturecords.com//wp-json/wc/v3/products")
         
         productsURLComponents?.queryItems = [
-            URLQueryItem(name: "page", value: "\(page)")
+            URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "stock_status", value: "instock")
         ]
         
-        let username = "ck_b2c22b84112f8980e5a94dc7131a1166b469d5a4"
-        let password = "cs_9f5ed385bcbf684edec5861c8fdfbaeceff2a968"
-        let loginString = String(format: "%@:%@", username, password)
-        let loginData = loginString.data(using: String.Encoding.utf8)!
-        let base64LoginString = loginData.base64EncodedString()
+        if let category = category {
+            productsURLComponents?.queryItems?.append(
+                URLQueryItem(name: "category", value: "\(category.id)")
+            )
+        }
         
         guard let productsURL = productsURLComponents?.url else {
            NSLog("Couldn't build url for products")
@@ -50,8 +53,7 @@ public class ProductAPIRetriever: NSObject, ProductAPIRetrieverProtocol {
         // create the request
         var request = URLRequest(url: productsURL)
         request.httpMethod = "GET"
-        request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        
+        request.setValue("Basic \(APIAuthHelper.getAuthForRequest())", forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if let error = error {

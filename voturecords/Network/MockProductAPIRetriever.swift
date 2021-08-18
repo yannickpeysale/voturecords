@@ -7,10 +7,12 @@
 
 import Foundation
 
+/// Mock implementation of ProductAPIRetrieverProtocol. Returns a collection of 3 products
 public class MockProductAPIRetriever: ProductAPIRetrieverProtocol {
     
     public func requestProducts(
         page: Int,
+        category: Category?,
         completion: @escaping ((Error?, [Product]) -> Void)
     ) throws {
         completion(nil, [

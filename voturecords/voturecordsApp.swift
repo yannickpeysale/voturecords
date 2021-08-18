@@ -13,6 +13,7 @@ struct voturecordsApp: App {
     static let container = Container()
     static var productRetriever: ProductAPIRetrieverProtocol?
     static var imageDownloader: ImageDownloaderProtocol?
+    static var categoriesRetriever: CategoriesAPIRetrieverProtocol?
     
     init() {
         voturecordsApp.container.register(ProductAPIRetrieverProtocol.self, factory: { _ in
@@ -34,6 +35,17 @@ struct voturecordsApp: App {
                 voturecordsApp.imageDownloader = imageDownloader
                 
                 return imageDownloader
+            }
+        })
+        
+        voturecordsApp.container.register(CategoriesAPIRetrieverProtocol.self, factory: { _ in
+            if let categoriesRetriever = voturecordsApp.categoriesRetriever  {
+                return categoriesRetriever
+            } else {
+                let categoriesRetriever = CategoriesAPIRetriever()
+                voturecordsApp.categoriesRetriever = categoriesRetriever
+                
+                return categoriesRetriever
             }
         })
     }

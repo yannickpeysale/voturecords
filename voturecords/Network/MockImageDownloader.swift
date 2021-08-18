@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Mock implrementation of ImageDownloaderProtocol, returning directly one image stores in Assets
 public class MockImageDownloader: ImageDownloaderProtocol {
     public func downloadImage(from url: URL, completion: @escaping (Data?, Error?) -> ()) {
         completion(UIImage(named: "ingrina")?.pngData(), nil)
