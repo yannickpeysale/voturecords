@@ -13,8 +13,8 @@ struct ProductCell: View {
     var body: some View {
         HStack(alignment: .center,
                spacing: 10) {
-            ProductImageView(image: product.images.first!, shadow: false)
-                .frame(width: 80)
+            ProductImageView(image: product.images.first!)
+                .frame(width: 80, height: 80)
             Text(product.name)
                 .foregroundColor(.black)
                 .fontWeight(.light)

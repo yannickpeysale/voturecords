@@ -11,20 +11,23 @@ struct ProductDetails: View {
     var product: Product
     
     var body: some View {
-            ScrollView() {
-                VStack(alignment: .leading, spacing: 10) {
-                    ProductImageView(image: product.images.first!, shadow: true)
-                    Text(product.name)
-                        .font(.title)
-                    Text(product.shortDescription)
-                        .font(.body)
-                    Text("\(product.price)€")
-                        .font(.footnote)
-                    
-                }
-                .navigationBarTitle("Details")
-                .padding()
+        ScrollView() {
+            VStack(spacing: 10) {
+                ProductImageSlider(images: product.images)
+                    .frame(width: 200, height: 200, alignment: .center)
+                Text(product.name)
+                    .font(.title)
+                    .lineLimit(Int.max)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(product.shortDescription)
+                    .font(.body)
+                Text("\(product.price)€")
+                    .font(.footnote)
+                
             }
+            .navigationBarTitle("Details")
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+        }
     }
 }
 

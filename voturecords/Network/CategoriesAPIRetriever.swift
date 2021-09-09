@@ -21,7 +21,7 @@ public class CategoriesAPIRetriever: CategoriesAPIRetrieverProtocol {
     ) throws {
         let session = URLSession.shared
         
-        var categoriesURLComponents = URLComponents(string: "https://voturecords.com/wp-json/wc/v3/products/categories")
+        var categoriesURLComponents = URLComponents(string: VOTUURL.categoriesURL)
         
         categoriesURLComponents?.queryItems = [
             URLQueryItem(name: "per_page", value: "20")
@@ -35,7 +35,6 @@ public class CategoriesAPIRetriever: CategoriesAPIRetrieverProtocol {
         // create the request
         var request = URLRequest(url: categoriesURL)
         request.httpMethod = "GET"
-        request.setValue("Basic \(APIAuthHelper.getAuthForRequest())", forHTTPHeaderField: "Authorization")
         
         
         let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in

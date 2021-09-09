@@ -8,7 +8,7 @@
 import Foundation
 
 /// Image associated to a product
-public class ProductImage: Decodable {
+public class ProductImage: Decodable, Hashable {
     /// Image identifier
     public let id: Int
     /// Image source url
@@ -35,5 +35,13 @@ public class ProductImage: Decodable {
         self.src = src
         self.name = name
         self.alt = alt
+    }
+    
+    public static func == (lhs: ProductImage, rhs: ProductImage) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
     }
 }

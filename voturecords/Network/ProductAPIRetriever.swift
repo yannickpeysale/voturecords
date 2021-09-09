@@ -32,7 +32,7 @@ public class ProductAPIRetriever: NSObject, ProductAPIRetrieverProtocol {
     ) throws {
         let session = URLSession.shared
         
-        var productsURLComponents = URLComponents(string: "https://voturecords.com//wp-json/wc/v3/products")
+        var productsURLComponents = URLComponents(string: VOTUURL.productsURL)
         
         productsURLComponents?.queryItems = [
             URLQueryItem(name: "page", value: "\(page)"),
@@ -53,7 +53,6 @@ public class ProductAPIRetriever: NSObject, ProductAPIRetrieverProtocol {
         // create the request
         var request = URLRequest(url: productsURL)
         request.httpMethod = "GET"
-        request.setValue("Basic \(APIAuthHelper.getAuthForRequest())", forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if let error = error {
