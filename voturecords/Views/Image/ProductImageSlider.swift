@@ -12,8 +12,8 @@ struct ProductImageSlider: View {
     
     init(images: [ProductImage]) {
         self.images = images
-        UIPageControl.appearance().currentPageIndicatorTintColor = .black
-        UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+        UIPageControl.appearance().currentPageIndicatorTintColor = .label
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.label.withAlphaComponent(0.2)
     }
     
     var body: some View {
