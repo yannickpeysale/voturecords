@@ -83,6 +83,7 @@ struct ProductList: View {
     @ObservedObject var categoryViewModel: CategorySelectorViewModel = CategorySelectorViewModel()
     
     @State private var showingSortOrder = false
+    @State private var animateLoading = false
     
     init() {
         self.productModels.requestInitialProducts()
@@ -92,11 +93,20 @@ struct ProductList: View {
     var body: some View {
         switch productModels.state {
         case .loading:
-            VStack() {
-                Text("Loading products...")
-                    .fontWeight(.light)
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
+            ZStack() {
+                Color(UIColor.systemBackground)
+                    .ignoresSafeArea(.all)
+                VStack() {
+                    Image("logo")
+                        .opacity(animateLoading ? 0.3 : 1)
+                        .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true), value: self.animateLoading)
+                        .onAppear {
+                            NSLog("Loading state appear")
+                            self.animateLoading.toggle()
+                        }
+                    Text("Loading products...")
+                        .fontWeight(.light)
+                }
             }
             
         case .loaded:
