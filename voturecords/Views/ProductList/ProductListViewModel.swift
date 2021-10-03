@@ -39,10 +39,13 @@ public enum LoadingButtonState {
 public class ProductListViewModel: ObservableObject {
     let productAPIRetriever: ProductAPIRetrieverProtocol
     @Published var state: ProductListState = .loading
-    private var currentPage = 1
+    private(set) var currentPage = 1
     @Published var products: [Product] = []
     @Published var loadingButtonState: LoadingButtonState = .standard
     public var category: Category?
+    
+    /// Default page size is 10
+    public static let pageSize = 10
     
     init() {
         guard let retriever = voturecordsApp.container.resolve(ProductAPIRetrieverProtocol.self) else {

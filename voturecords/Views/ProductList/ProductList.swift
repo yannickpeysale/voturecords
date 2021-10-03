@@ -72,6 +72,7 @@ struct LoadingButton: View {
             .foregroundColor(.white)
             .clipShape(Rectangle())
             .cornerRadius(10)
+            .disabled(true)
         }
         
         
@@ -104,8 +105,14 @@ struct ProductList: View {
                             NSLog("Loading state appear")
                             self.animateLoading.toggle()
                         }
-                    Text("Loading products...")
-                        .fontWeight(.light)
+                    if let category = productModels.category {
+                        Text("Loading \(category.name.lowercased())...")
+                            .fontWeight(.light)
+                            .multilineTextAlignment(.center)
+                    } else {
+                        Text("Loading all products...")
+                            .fontWeight(.light)
+                    }
                 }
             }
             
@@ -118,12 +125,14 @@ struct ProductList: View {
                                 ProductCell(product: product)
                             }
                         }
-                        LoadingButton(
-                            buttonState: self.productModels.loadingButtonState,
-                            buttonAction: {
-                                self.productModels.loadMoreProducts()
-                            })
-                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
+                        if productModels.products.count % ProductListViewModel.pageSize == 0 {
+                            LoadingButton(
+                                buttonState: self.productModels.loadingButtonState,
+                                buttonAction: {
+                                    self.productModels.loadMoreProducts()
+                                })
+                                .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
+                        }
                     }
                     .padding(5)
                 }
