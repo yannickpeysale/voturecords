@@ -14,15 +14,16 @@ struct ProductDetails: View {
         ScrollView() {
             VStack(spacing: 10) {
                 ProductImageSlider(images: product.images)
-                    .frame(width: 200, height: 200, alignment: .center)
+                    .frame(width: 300, height: 300, alignment: .center)
                 Text(product.name)
                     .font(.title)
                     .lineLimit(Int.max)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(product.shortDescription)
+                Text(product.shortDescription.stripOutHtml() ?? "")
                     .font(.body)
                 Text("\(product.price)€")
-                    .font(.footnote)
+                    .font(.body)
+                    .bold()
                 
             }
             .navigationBarTitle("Details")

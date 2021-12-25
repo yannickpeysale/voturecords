@@ -81,6 +81,7 @@ public class ProductListViewModel: ObservableObject {
             })
         } catch {
             NSLog("Interactor could not request products")
+            self.state = .error
         }
     }
     
@@ -109,6 +110,7 @@ public class ProductListViewModel: ObservableObject {
             })
         } catch {
             NSLog("Interactor could not request products")
+            self.state = .error
         }
     }
 }

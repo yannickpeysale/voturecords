@@ -11,57 +11,21 @@ import Swinject
 @main
 struct voturecordsApp: App {
     static let container = Container()
-    static var apiHelper: APIHelper?
-    static var imageDownloader: ImageDownloaderProtocol?
-    static var networkCallHelper: NetworkCallHelper?
-    static var categoriesRetriever: CategoriesAPIRetrieverProtocol?
     
     init() {
         voturecordsApp.container.register(ImageDownloaderProtocol.self, factory: { _ in
-            if let imageDownloader = voturecordsApp.imageDownloader  {
-                return imageDownloader
-            } else {
-                let imageDownloader = ImageDownloader()
-                voturecordsApp.imageDownloader = imageDownloader
-                
-                return imageDownloader
-            }
-        })
-        
-        voturecordsApp.container.register(CategoriesAPIRetrieverProtocol.self, factory: { _ in
-            if let categoriesRetriever = voturecordsApp.categoriesRetriever  {
-                return categoriesRetriever
-            } else {
-                let categoriesRetriever = CategoriesAPIRetriever()
-                voturecordsApp.categoriesRetriever = categoriesRetriever
-                
-                return categoriesRetriever
-            }
+            ImageDownloader()
         })
         
         voturecordsApp.container.register(NetworkCallHelper.self, factory: { _ in
-            if let networkCallHelper = voturecordsApp.networkCallHelper {
-                return networkCallHelper
-            } else {
-                let networkCallHelper = DefaultNetworkCallHelper()
-                voturecordsApp.networkCallHelper = networkCallHelper
-                
-                return networkCallHelper
-            }
+            DefaultNetworkCallHelper()
         })
         
         voturecordsApp.container.register(APIHelper.self, factory: { resolver in
-            if let apiHelper = voturecordsApp.apiHelper {
-                return apiHelper
-            } else {
-                guard let networkCallHelper = resolver.resolve(NetworkCallHelper.self) else {
-                    return DefaultAPIHelper(networkCallHelper: DefaultNetworkCallHelper())
-                }
-                let apiHelper = DefaultAPIHelper(networkCallHelper: networkCallHelper)
-                voturecordsApp.apiHelper = apiHelper
-                
-                return apiHelper
+            guard let networkCallHelper = resolver.resolve(NetworkCallHelper.self) else {
+                return DefaultAPIHelper(networkCallHelper: DefaultNetworkCallHelper())
             }
+            return DefaultAPIHelper(networkCallHelper: networkCallHelper)
         })
     }
     

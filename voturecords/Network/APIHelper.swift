@@ -16,6 +16,7 @@ public enum APIError: Error {
     /// Answer from the back is empty
     case emptyAnswer
     
+    /// Description message for the error
     public var localizedDescription: String {
         switch self {
         case .emptyAnswer:
