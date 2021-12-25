@@ -8,14 +8,14 @@
 import Foundation
 
 /// Mock implementation of ProductAPIRetrieverProtocol. Returns a collection of 3 products
-public class MockProductAPIRetriever: ProductAPIRetrieverProtocol {
+public class MockAPIHelper: APIHelper {
     
     public func requestProducts(
         page: Int,
         category: Category?,
-        completion: @escaping ((Error?, [Product]) -> Void)
+        completion: @escaping ((APIReturnValue<[Product]>) -> Void)
     ) throws {
-        completion(nil, [
+        completion(.success([
             Product(
                 id: 11323,
                 name: "Belka | Ermitage 12\"",
@@ -67,8 +67,19 @@ public class MockProductAPIRetriever: ProductAPIRetrieverProtocol {
                     )
                 ]
             )
-        ])
+        ]))
     }
     
-    
+    public func requestCategories(
+        completion: @escaping ((APIReturnValue<[Category]>) -> Void)
+    ) throws {
+        completion(.success(
+            [
+                Category(id: 1, name: "Vinyl", parentId: 0, description: "vinyl records"),
+                Category(id: 2, name: "12\"", parentId: 1, description: "12\" vinyl"),
+                Category(id: 3, name: "7\"", parentId: 1, description: "7\" vinyl")
+            ]
+        )
+        )
+    }
 }

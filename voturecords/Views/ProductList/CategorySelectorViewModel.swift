@@ -12,30 +12,31 @@ import Foundation
 /// - categoriesAPIRetriever : retrieved through dependency injection, allows to get all categories from the backend
 /// Hint : inject a MockCategoriesAPIRetriever to get a test set of categories
 public class CategorySelectorViewModel: ObservableObject {
-    private let categoriesAPIRetriever: CategoriesAPIRetrieverProtocol
+    private let apiHelper: APIHelper
     
     @Published var categories: [Category] = []
     
     init() {
-        guard let categoriesAPIRetriever = voturecordsApp.container.resolve(CategoriesAPIRetrieverProtocol.self) else {
+        guard let apiHelper = voturecordsApp.container.resolve(APIHelper.self) else {
             NSLog("Couldn't resolve ProductRetriever : specifying a default one")
-            self.categoriesAPIRetriever = CategoriesAPIRetriever()
+            self.apiHelper = DefaultAPIHelper(networkCallHelper: DefaultNetworkCallHelper())
             return
         }
         
-        self.categoriesAPIRetriever = categoriesAPIRetriever
+        self.apiHelper = apiHelper
     }
     
     public func getCategories() {
         do {
-            try self.categoriesAPIRetriever.requestCategories { [weak self] error, categories in
-                if error != nil {
+            try self.apiHelper.requestCategories { [weak self] returnValue in
+                guard let self = self else { return }
+                switch returnValue {
+                case .success(let categories):
+                    DispatchQueue.main.async {
+                        self.categories = categories
+                    }
+                case .failure(let error):
                     NSLog("Error while retrieving categories \(String(describing: error))")
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    self?.categories = categories
                 }
             }
         } catch {

@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		782A63642506980400C82C0B /* ProductAPIRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A63632506980400C82C0B /* ProductAPIRetriever.swift */; };
+		780D35A22777376D00ED3DAC /* NetworkCallHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35A12777376D00ED3DAC /* NetworkCallHelper.swift */; };
+		780D35A4277737A400ED3DAC /* MockNetworkCallHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35A3277737A400ED3DAC /* MockNetworkCallHelper.swift */; };
+		782A63642506980400C82C0B /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A63632506980400C82C0B /* APIHelper.swift */; };
 		782A63672507D73800C82C0B /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A63662507D73800C82C0B /* ProductListViewModel.swift */; };
 		7874AB8C26BC6D0D0062FCBA /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB8B26BC6D0D0062FCBA /* ProductDetails.swift */; };
 		7874AB8F26BC731C0062FCBA /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB8E26BC731C0062FCBA /* NewsView.swift */; };
-		7874AB9126BC74D40062FCBA /* MockProductAPIRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9026BC74D40062FCBA /* MockProductAPIRetriever.swift */; };
+		7874AB9126BC74D40062FCBA /* MockAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9026BC74D40062FCBA /* MockAPIHelper.swift */; };
 		7874AB9326BC7A400062FCBA /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9226BC7A400062FCBA /* ProductImageView.swift */; };
 		7874AB9626BC7ADF0062FCBA /* ProductImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9526BC7ADF0062FCBA /* ProductImageViewModel.swift */; };
 		7874AB9826BE77D10062FCBA /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9726BE77D10062FCBA /* ImageDownloader.swift */; };
@@ -52,11 +54,13 @@
 
 /* Begin PBXFileReference section */
 		3044F7A8C828E1018BAD24CA /* Pods_voturecords.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_voturecords.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		782A63632506980400C82C0B /* ProductAPIRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAPIRetriever.swift; sourceTree = "<group>"; };
+		780D35A12777376D00ED3DAC /* NetworkCallHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallHelper.swift; sourceTree = "<group>"; };
+		780D35A3277737A400ED3DAC /* MockNetworkCallHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkCallHelper.swift; sourceTree = "<group>"; };
+		782A63632506980400C82C0B /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		782A63662507D73800C82C0B /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
 		7874AB8B26BC6D0D0062FCBA /* ProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetails.swift; sourceTree = "<group>"; };
 		7874AB8E26BC731C0062FCBA /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
-		7874AB9026BC74D40062FCBA /* MockProductAPIRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductAPIRetriever.swift; sourceTree = "<group>"; };
+		7874AB9026BC74D40062FCBA /* MockAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIHelper.swift; sourceTree = "<group>"; };
 		7874AB9226BC7A400062FCBA /* ProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
 		7874AB9526BC7ADF0062FCBA /* ProductImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageViewModel.swift; sourceTree = "<group>"; };
 		7874AB9726BE77D10062FCBA /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
@@ -123,13 +127,15 @@
 		782A6362250697C900C82C0B /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				782A63632506980400C82C0B /* ProductAPIRetriever.swift */,
-				7874AB9026BC74D40062FCBA /* MockProductAPIRetriever.swift */,
+				782A63632506980400C82C0B /* APIHelper.swift */,
+				7874AB9026BC74D40062FCBA /* MockAPIHelper.swift */,
 				7874AB9726BE77D10062FCBA /* ImageDownloader.swift */,
 				7874AB9926BE82170062FCBA /* MockImageDownloader.swift */,
 				7874AB9D26C311730062FCBA /* CategoriesAPIRetriever.swift */,
 				7874AB9F26C3131F0062FCBA /* MockCategoriesAPIRetriever.swift */,
 				78BAF4D926CED995000467A5 /* VOTUURL.swift */,
+				780D35A12777376D00ED3DAC /* NetworkCallHelper.swift */,
+				780D35A3277737A400ED3DAC /* MockNetworkCallHelper.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -438,17 +444,19 @@
 				7874AB9A26BE82170062FCBA /* MockImageDownloader.swift in Sources */,
 				7874AB8C26BC6D0D0062FCBA /* ProductDetails.swift in Sources */,
 				78F1569A25063BD400B54E9A /* ProductList.swift in Sources */,
+				780D35A22777376D00ED3DAC /* NetworkCallHelper.swift in Sources */,
 				7874AB8F26BC731C0062FCBA /* NewsView.swift in Sources */,
 				782A63672507D73800C82C0B /* ProductListViewModel.swift in Sources */,
 				78F156C625065FA900B54E9A /* ProductImage.swift in Sources */,
-				7874AB9126BC74D40062FCBA /* MockProductAPIRetriever.swift in Sources */,
+				7874AB9126BC74D40062FCBA /* MockAPIHelper.swift in Sources */,
 				7874ABA226C3132B0062FCBA /* Category.swift in Sources */,
 				78F1569825063BD400B54E9A /* voturecordsApp.swift in Sources */,
 				7874AB9326BC7A400062FCBA /* ProductImageView.swift in Sources */,
+				780D35A4277737A400ED3DAC /* MockNetworkCallHelper.swift in Sources */,
 				7874ABA026C3131F0062FCBA /* MockCategoriesAPIRetriever.swift in Sources */,
 				7874AB9E26C311730062FCBA /* CategoriesAPIRetriever.swift in Sources */,
 				78E9786A26C3A78600CA945D /* CategorySelectorViewModel.swift in Sources */,
-				782A63642506980400C82C0B /* ProductAPIRetriever.swift in Sources */,
+				782A63642506980400C82C0B /* APIHelper.swift in Sources */,
 				78F156C425065E0500B54E9A /* Product.swift in Sources */,
 				78BAF4DA26CED996000467A5 /* VOTUURL.swift in Sources */,
 				7874AB9826BE77D10062FCBA /* ImageDownloader.swift in Sources */,

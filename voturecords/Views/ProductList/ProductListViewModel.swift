@@ -37,7 +37,7 @@ public enum LoadingButtonState {
 /// - loadiingButtonState : state of the button to load more product, as defined in LoadingButtonState. Published
 /// - category : category for the products retrieved (optional, if nil retrieves all products)
 public class ProductListViewModel: ObservableObject {
-    let productAPIRetriever: ProductAPIRetrieverProtocol
+    let apiHelper: APIHelper
     @Published var state: ProductListState = .loading
     private(set) var currentPage = 1
     @Published var products: [Product] = []
@@ -48,12 +48,12 @@ public class ProductListViewModel: ObservableObject {
     public static let pageSize = 10
     
     init() {
-        guard let retriever = voturecordsApp.container.resolve(ProductAPIRetrieverProtocol.self) else {
+        guard let apiHelper = voturecordsApp.container.resolve(APIHelper.self) else {
             NSLog("Couldn't resolve ProductRetriever : specifying a default one")
-            self.productAPIRetriever = ProductAPIRetriever()
+            self.apiHelper = DefaultAPIHelper(networkCallHelper: DefaultNetworkCallHelper())
             return
         }
-        self.productAPIRetriever = retriever
+        self.apiHelper = apiHelper
     }
     
     /// Sends a first batch of products, using specified category
@@ -63,19 +63,21 @@ public class ProductListViewModel: ObservableObject {
         }
         do {
             self.currentPage = 1
-            try self.productAPIRetriever.requestProducts(
+            try self.apiHelper.requestProducts(
                 page: currentPage,
                 category: category,
-                completion: { [weak self] error, products in
-                guard error == nil, let self = self else {
-                    self?.state = .error
-                    return
-                }
-                self.currentPage = self.currentPage + 1
-                DispatchQueue.main.async {
-                    self.state = .loaded
-                    self.products = products
-                }
+                completion: { [weak self] returnValue in
+                    guard let self = self else { return }
+                    switch returnValue {
+                    case .success(let products):
+                        self.currentPage = self.currentPage + 1
+                        DispatchQueue.main.async {
+                            self.state = .loaded
+                            self.products = products
+                        }
+                    case .failure:
+                        self.state = .error
+                    }
             })
         } catch {
             NSLog("Interactor could not request products")
@@ -88,20 +90,22 @@ public class ProductListViewModel: ObservableObject {
             self.loadingButtonState = .loading
         }
         do {
-            try self.productAPIRetriever.requestProducts(
+            try self.apiHelper.requestProducts(
                 page: currentPage,
                 category: category,
-                completion: { [weak self] error, products in
-                guard error == nil, let self = self else {
-                    self?.state = .error
-                    return
-                }
-                self.currentPage = self.currentPage + 1
-                DispatchQueue.main.async {
-                    self.loadingButtonState = .standard
-                    self.state = .loaded
-                    self.products = self.products + products
-                }
+                completion: { [weak self] returnValue in
+                    guard let self = self else { return }
+                    switch returnValue {
+                    case .success(let products):
+                        self.currentPage = self.currentPage + 1
+                        DispatchQueue.main.async {
+                            self.loadingButtonState = .standard
+                            self.state = .loaded
+                            self.products = self.products + products
+                        }
+                    case .failure:
+                        self.state = .error
+                    }
             })
         } catch {
             NSLog("Interactor could not request products")
