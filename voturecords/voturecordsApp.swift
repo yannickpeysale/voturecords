@@ -32,14 +32,13 @@ struct voturecordsApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
+                NewsView()
+                    .tabItem {
+                        Label("Latest news", systemImage: "square.and.pencil")
+                    }
                 ProductList()
                     .tabItem {
                         Label("Products", systemImage: "list.dash")
-                    }
-                
-                NewsView()
-                    .tabItem {
-                        Label("News", systemImage: "square.and.pencil")
                     }
             }
             

@@ -10,6 +10,8 @@
 		780D35A22777376D00ED3DAC /* NetworkCallHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35A12777376D00ED3DAC /* NetworkCallHelper.swift */; };
 		780D35A4277737A400ED3DAC /* MockNetworkCallHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35A3277737A400ED3DAC /* MockNetworkCallHelper.swift */; };
 		780D35A727777B6D00ED3DAC /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35A627777B6D00ED3DAC /* String+HTML.swift */; };
+		780D35A92778A32B00ED3DAC /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35A82778A32B00ED3DAC /* News.swift */; };
+		780D35AB2778A86100ED3DAC /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35AA2778A86100ED3DAC /* NewsViewModel.swift */; };
 		782A63642506980400C82C0B /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A63632506980400C82C0B /* APIHelper.swift */; };
 		782A63672507D73800C82C0B /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A63662507D73800C82C0B /* ProductListViewModel.swift */; };
 		7874AB8C26BC6D0D0062FCBA /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB8B26BC6D0D0062FCBA /* ProductDetails.swift */; };
@@ -56,6 +58,8 @@
 		780D35A12777376D00ED3DAC /* NetworkCallHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallHelper.swift; sourceTree = "<group>"; };
 		780D35A3277737A400ED3DAC /* MockNetworkCallHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkCallHelper.swift; sourceTree = "<group>"; };
 		780D35A627777B6D00ED3DAC /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
+		780D35A82778A32B00ED3DAC /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		780D35AA2778A86100ED3DAC /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		782A63632506980400C82C0B /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		782A63662507D73800C82C0B /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
 		7874AB8B26BC6D0D0062FCBA /* ProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetails.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				7874AB8E26BC731C0062FCBA /* NewsView.swift */,
+				780D35AA2778A86100ED3DAC /* NewsViewModel.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				78F156C325065E0500B54E9A /* Product.swift */,
 				78F156C525065FA900B54E9A /* ProductImage.swift */,
 				7874ABA126C3132B0062FCBA /* Category.swift */,
+				780D35A82778A32B00ED3DAC /* News.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -462,7 +468,9 @@
 				78E9786A26C3A78600CA945D /* CategorySelectorViewModel.swift in Sources */,
 				782A63642506980400C82C0B /* APIHelper.swift in Sources */,
 				78F156C425065E0500B54E9A /* Product.swift in Sources */,
+				780D35AB2778A86100ED3DAC /* NewsViewModel.swift in Sources */,
 				78BAF4DA26CED996000467A5 /* VOTUURL.swift in Sources */,
+				780D35A92778A32B00ED3DAC /* News.swift in Sources */,
 				7874AB9826BE77D10062FCBA /* ImageDownloader.swift in Sources */,
 				7874AB9626BC7ADF0062FCBA /* ProductImageViewModel.swift in Sources */,
 			);

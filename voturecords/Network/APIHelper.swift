@@ -41,6 +41,10 @@ public protocol APIHelper {
     func requestCategories(
         completion: @escaping ((APIReturnValue<[Category]>) -> Void)
     ) throws
+    
+    func requestNews(
+        completion: @escaping ((APIReturnValue<[News]>) -> Void)
+    ) throws
 }
 
 /// Default implementation for APIHelper, performing calls to the Deezer API
@@ -117,6 +121,33 @@ public class DefaultAPIHelper: APIHelper {
                     }
                     
                     completion(.success(categories))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+    public func requestNews(
+        completion: @escaping ((APIReturnValue<[News]>) -> Void)
+    ) throws {
+        var params: [String: String] = [:]
+        params["per_page"] = "20"
+        
+        self.networkCallHelper.sendAPICall(
+            with: VOTUURL.newsURL,
+            params: params) { returnValue in
+                switch returnValue {
+                case .success(let data):
+                    NSLog(String(data: data, encoding: .utf8) ?? "Answer has incorrect encoding")
+                    let jsonDecoder = JSONDecoder()
+                    
+                    guard let news = try? jsonDecoder.decode([News].self, from: data) else {
+                        NSLog("Couldn't parse answer, data has wrong format")
+                        completion(.failure(APIError.parsingError))
+                        return
+                    }
+                    
+                    completion(.success(news))
                 case .failure(let error):
                     completion(.failure(error))
                 }
