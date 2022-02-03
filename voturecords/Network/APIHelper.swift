@@ -70,6 +70,7 @@ public class DefaultAPIHelper: APIHelper {
         var params: [String: String] = [:]
         params["page"] = "\(page)"
         params["stock_status"] = "instock"
+        params["status"] = "publish"
         
         if let category = category {
             params["category"] = "\(category.id)"
