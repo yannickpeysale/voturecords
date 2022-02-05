@@ -34,11 +34,15 @@ struct voturecordsApp: App {
             TabView {
                 NewsView()
                     .tabItem {
-                        Label("Latest news", systemImage: "square.and.pencil")
+                        Label("Latest news", systemImage: "list.dash")
                     }
                 ProductList()
                     .tabItem {
-                        Label("Products", systemImage: "list.dash")
+                        Label("Products", systemImage: "record.circle")
+                    }
+                AboutView()
+                    .tabItem {
+                        Label("About", systemImage: "info.circle")
                     }
             }
             

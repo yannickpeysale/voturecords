@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78066F5F27AEBC7300981AF1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78066F5E27AEBC7300981AF1 /* AboutView.swift */; };
 		780D35A22777376D00ED3DAC /* NetworkCallHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35A12777376D00ED3DAC /* NetworkCallHelper.swift */; };
 		780D35A4277737A400ED3DAC /* MockNetworkCallHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35A3277737A400ED3DAC /* MockNetworkCallHelper.swift */; };
 		780D35A727777B6D00ED3DAC /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35A627777B6D00ED3DAC /* String+HTML.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		3044F7A8C828E1018BAD24CA /* Pods_voturecords.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_voturecords.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78066F5E27AEBC7300981AF1 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		780D35A12777376D00ED3DAC /* NetworkCallHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallHelper.swift; sourceTree = "<group>"; };
 		780D35A3277737A400ED3DAC /* MockNetworkCallHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkCallHelper.swift; sourceTree = "<group>"; };
 		780D35A627777B6D00ED3DAC /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		78066F5D27AEBC6100981AF1 /* AboutView */ = {
+			isa = PBXGroup;
+			children = (
+				78066F5E27AEBC7300981AF1 /* AboutView.swift */,
+			);
+			path = AboutView;
+			sourceTree = "<group>";
+		};
 		780D35A527777B5900ED3DAC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +198,7 @@
 		78E9786626C3A66300CA945D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				78066F5D27AEBC6100981AF1 /* AboutView */,
 				782A63652507D72100C82C0B /* ProductList */,
 				7874AB8A26BC6CF70062FCBA /* ProductDetails */,
 				7874AB8D26BC73090062FCBA /* News */,
@@ -464,6 +475,7 @@
 				78F1569825063BD400B54E9A /* voturecordsApp.swift in Sources */,
 				780D35A727777B6D00ED3DAC /* String+HTML.swift in Sources */,
 				7874AB9326BC7A400062FCBA /* ProductImageView.swift in Sources */,
+				78066F5F27AEBC7300981AF1 /* AboutView.swift in Sources */,
 				780D35A4277737A400ED3DAC /* MockNetworkCallHelper.swift in Sources */,
 				78E9786A26C3A78600CA945D /* CategorySelectorViewModel.swift in Sources */,
 				782A63642506980400C82C0B /* APIHelper.swift in Sources */,
@@ -630,8 +642,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"voturecords/Preview Content\"";
+				DEVELOPMENT_TEAM = 5H55U928LZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = voturecords/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -641,6 +655,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.voturecords.voturecords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "voturecords Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -652,8 +667,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"voturecords/Preview Content\"";
+				DEVELOPMENT_TEAM = 5H55U928LZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = voturecords/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -663,6 +680,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.voturecords.voturecords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "voturecords Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
