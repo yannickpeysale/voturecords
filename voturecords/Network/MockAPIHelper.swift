@@ -24,6 +24,7 @@ public class MockAPIHelper: APIHelper {
                 shortDescription: "screamo from Germany. On black or yellow 12\" vinyl",
                 price: "10",
                 purchasable: true,
+                url: "https://google.com",
                 images: [
                     ProductImage(
                         id: 11324,
@@ -41,6 +42,7 @@ public class MockAPIHelper: APIHelper {
                 shortDescription: "screamo from Czech Republic, Russia, Malaisia and Canada. On black 12\" vinyl",
                 price: "10",
                 purchasable: true,
+                url: "https://google.com",
                 images: [
                     ProductImage(
                         id: 11322,
@@ -58,6 +60,7 @@ public class MockAPIHelper: APIHelper {
                 shortDescription: "emo from the US. On black 12\" vinyl",
                 price: "10",
                 purchasable: true,
+                url: "https://google.com",
                 images: [
                     ProductImage(
                         id: 11297,

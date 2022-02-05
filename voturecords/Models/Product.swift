@@ -35,6 +35,8 @@ public class Product: Decodable, Hashable {
     public let price: String
     /// Product can be purchased
     public let purchasable: Bool
+    /// Url of the product on the website
+    public let url: String
     /// Images associated to the product
     public let images: [ProductImage]
     
@@ -46,6 +48,7 @@ public class Product: Decodable, Hashable {
         shortDescription: String,
         price: String,
         purchasable: Bool,
+        url: String,
         images: [ProductImage]
     ) {
         self.id = id
@@ -55,6 +58,7 @@ public class Product: Decodable, Hashable {
         self.shortDescription = shortDescription
         self.price = price
         self.purchasable = purchasable
+        self.url = url
         self.images = images
     }
     
@@ -76,6 +80,7 @@ public class Product: Decodable, Hashable {
         case shortDescription = "short_description"
         case price
         case purchasable
+        case url = "permalink"
         case images
     }
 }
@@ -90,6 +95,7 @@ extension Product {
             shortDescription: "test product",
             price: "100",
             purchasable: false,
+            url: "https://google.com",
             images: []
         )
     }

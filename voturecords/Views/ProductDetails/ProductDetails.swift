@@ -7,6 +7,35 @@
 
 import SwiftUI
 
+struct OpenURLButton: View {
+    @Environment(\.openURL) var openURL
+    private let urlString: String
+    
+    init(urlString: String) {
+        self.urlString = urlString
+    }
+    
+    var body: some View {
+        Button(action: {
+            openProduct(urlString)
+        }) {
+            Text("Listen / order")
+        }
+        .frame(width: 150, height: 40, alignment: .center)
+        .background(Color.blue)
+        .foregroundColor(.white)
+        .clipShape(Rectangle())
+        .cornerRadius(10)
+    }
+
+    func openProduct(_ urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        openURL(url)
+    }
+}
+
 struct ProductDetails: View {
     var product: Product
     
@@ -26,7 +55,7 @@ struct ProductDetails: View {
                 Text("\(product.price)€")
                     .font(.body)
                     .bold()
-                
+                OpenURLButton(urlString: product.url)
             }
             .navigationBarTitle("Details")
             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
