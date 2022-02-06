@@ -19,12 +19,12 @@ public enum ProductImageState {
 /// - state : loading state of the image
 /// - image : object containing all the info for the image
 /// - imageDownloader : injected, allows to retrieve image info (use a MockImageDownloader for testing)
-public class ProductImageViewModel: ObservableObject {
+public class ImageViewModel: ObservableObject {
     @Published var state: ProductImageState
-    let image: ProductImage
+    let image: String
     let imageDownloader: ImageDownloaderProtocol
     
-    public init(image: ProductImage) {
+    public init(image: String) {
         self.state = .loading
         self.image = image
         guard let imageDownloader = voturecordsApp.container.resolve(ImageDownloaderProtocol.self) else {
@@ -37,8 +37,8 @@ public class ProductImageViewModel: ObservableObject {
     
     // downloads image from the model source, and updates the state accordingly
     public func downloadImage() {
-        guard let url = URL(string: self.image.src) else {
-            NSLog("Couldn't build url from image src : \(self.image.src)")
+        guard let url = URL(string: image) else {
+            NSLog("Couldn't build url from image src : \(image)")
             self.state = .error
             return
         }

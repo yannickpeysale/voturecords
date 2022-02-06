@@ -89,7 +89,13 @@ public class MockAPIHelper: APIHelper {
     public func requestNews(completion: @escaping ((APIReturnValue<[News]>) -> Void)) {
         completion(.success(
             [
-                News(id: 1, title: "Test news 1", content: "Very important content", link: "https://voturecords.com/toto")
+                News(
+                    id: 1,
+                    title: "Test news 1",
+                    content: "Very important content",
+                    link: "https://voturecords.com/toto",
+                    image: "https://i0.wp.com/voturecords.com/wp-content/uploads/2021/07/discordvotu.jpeg?fit=1080%2C1080&ssl=1"
+                )
             ]
         )
         )

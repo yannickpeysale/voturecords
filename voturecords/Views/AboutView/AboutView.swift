@@ -18,9 +18,15 @@ struct AboutView: View {
                         .font(.title)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
-                    Text("DIY post-rock, post-hardcore, screamo, indie/punk label / distro based in Bordeaux (FR)")
+                    Text("DIY post-rock, post-hardcore, screamo, indie/punk vinyl record label / distro based in Bordeaux (FR), since 2013.")
                         .font(.body)
                         .padding()
+                    Text("The goal is to help bands release their music on vinyl records, as well as producing beautiful objects that everyone will be happy to have in their collection.")
+                        .font(.body)
+                        .padding()
+                    Link(destination: URL(string: "https://voturecords.com")!) {
+                        Text("https://voturecords.com")
+                    }
                     OpenURLButton(title: "Contact", urlString: "mailto:contact@voturecords.com")
                 }
                 .navigationBarTitle("About")

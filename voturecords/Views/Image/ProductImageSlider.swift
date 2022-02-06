@@ -20,7 +20,7 @@ struct ProductImageSlider: View {
         if images.count > 1 {
             TabView {
                 ForEach(images, id: \.self) { image in
-                    ProductImageView(image: image)
+                    ImageView(image: image.src)
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 40, trailing: 5))
                     
                 }
@@ -28,7 +28,7 @@ struct ProductImageSlider: View {
             .tabViewStyle(PageTabViewStyle())
             
         } else {
-            ProductImageView(image: images.first!)
+            ImageView(image: images.first!.src)
         }
     }
 }

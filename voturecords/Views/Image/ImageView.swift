@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ProductImageView: View {
-    let image: ProductImage
-    @ObservedObject var imageViewModel: ProductImageViewModel
+struct ImageView: View {
+    let image: String
+    @ObservedObject var imageViewModel: ImageViewModel
     
-    public init(image: ProductImage) {
+    public init(image: String) {
         self.image = image
-        self.imageViewModel = ProductImageViewModel(image: image)
+        self.imageViewModel = ImageViewModel(image: image)
         self.imageViewModel.downloadImage()
     }
     
@@ -26,7 +26,7 @@ struct ProductImageView: View {
         case .loaded(let loadedImage):
             Image(uiImage: loadedImage)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
                 
         case .error:
             Button(action: {
@@ -41,6 +41,6 @@ struct ProductImageView: View {
 
 struct ProductImageView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductImageView(image: ProductImage(id: 1, src: "", name: "", alt: ""))
+        ImageView(image: "")
     }
 }

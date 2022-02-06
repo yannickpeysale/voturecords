@@ -13,6 +13,9 @@ struct NewsCell: View {
     var body: some View {
         HStack(alignment: .center,
                spacing: 10) {
+            ImageView(image: news.image)
+                .frame(width: 80, height: 80)
+                .clipped()
             Text(news.title)
                 .foregroundColor(Color(UIColor.label))
                 .font(.body)

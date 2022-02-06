@@ -17,17 +17,21 @@ public class News: Decodable, Hashable {
     public let content: String
     /// URL of the news on the website
     public let link: String
+    /// URL of the image associated to the news
+    public let image: String
     
     init(
         id: Int,
         title: String,
         content: String,
-        link: String
+        link: String,
+        image: String
     ) {
         self.id = id
         self.title = title
         self.content = content
         self.link = link
+        self.image = image
     }
     
     public static func == (lhs: News, rhs: News) -> Bool {
@@ -44,6 +48,7 @@ public class News: Decodable, Hashable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
         self.link = try container.decode(String.self, forKey: .link)
+        self.image = try container.decode(String.self, forKey: .image)
         
         let titleContainer = try container.nestedContainer(keyedBy: NestedCodingKeys.self, forKey: .title)
         self.title = try titleContainer.decode(String.self, forKey: .rendered).stripOutHtml()!
@@ -57,6 +62,7 @@ public class News: Decodable, Hashable {
         case title
         case content
         case link
+        case image = "jetpack_featured_media_url"
     }
     
     enum NestedCodingKeys: String, CodingKey {
@@ -70,6 +76,8 @@ extension News {
             id: 1,
             title: "Test news",
             content: "Coucou, bienvenue dans cette news de test",
-            link: "https://voturecords.com/2021/07/02/join-the-discord-community/")
+            link: "https://voturecords.com/2021/07/02/join-the-discord-community/",
+            image: "https://i0.wp.com/voturecords.com/wp-content/uploads/2021/07/discordvotu.jpeg?fit=1080%2C1080&ssl=1"
+        )
     }
 }
