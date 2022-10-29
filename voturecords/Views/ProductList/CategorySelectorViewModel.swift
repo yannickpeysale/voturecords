@@ -33,7 +33,13 @@ public class CategorySelectorViewModel: ObservableObject {
                 switch returnValue {
                 case .success(let categories):
                     DispatchQueue.main.async {
-                        self.categories = categories
+                        let categoriesWithoutChildren: [Category] = categories.compactMap { category in
+                            if categories.contains(where: { $0.parentId == category.id }) {
+                                return nil
+                            }
+                            return category
+                        }
+                        self.categories = categoriesWithoutChildren.filter({ $0.count > 0 })
                     }
                 case .failure(let error):
                     NSLog("Error while retrieving categories \(String(describing: error))")

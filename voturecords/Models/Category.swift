@@ -17,17 +17,21 @@ public class Category: Decodable, Hashable {
     public let parentId: Int
     /// Category description
     public let description: String
+    /// Number of products in category
+    public let count: Int
     
     init(
         id: Int,
         name: String,
         parentId: Int,
-        description: String
+        description: String,
+        count: Int
     ) {
         self.id = id
         self.name = name
         self.parentId = parentId
         self.description = description
+        self.count = count
     }
     
     public static func == (lhs: Category, rhs: Category) -> Bool {
@@ -45,5 +49,6 @@ public class Category: Decodable, Hashable {
         case name
         case parentId = "parent"
         case description
+        case count
     }
 }

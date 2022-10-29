@@ -78,9 +78,9 @@ public class MockAPIHelper: APIHelper {
     ) throws {
         completion(.success(
             [
-                Category(id: 1, name: "Vinyl", parentId: 0, description: "vinyl records"),
-                Category(id: 2, name: "12\"", parentId: 1, description: "12\" vinyl"),
-                Category(id: 3, name: "7\"", parentId: 1, description: "7\" vinyl")
+                Category(id: 1, name: "Vinyl", parentId: 0, description: "vinyl records", count: 2),
+                Category(id: 2, name: "12\"", parentId: 1, description: "12\" vinyl", count: 3),
+                Category(id: 3, name: "7\"", parentId: 1, description: "7\" vinyl", count: 0)
             ]
         )
         )

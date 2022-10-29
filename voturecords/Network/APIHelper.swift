@@ -105,7 +105,7 @@ public class DefaultAPIHelper: APIHelper {
         completion: @escaping ((APIReturnValue<[Category]>) -> Void)
     ) throws {
         var params: [String: String] = [:]
-        params["per_page"] = "20"
+        params["per_page"] = "30"
         
         self.networkCallHelper.sendAPICall(
             with: VOTUURL.categoriesURL,
