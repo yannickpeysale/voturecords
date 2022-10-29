@@ -28,8 +28,8 @@ struct OpenURLButton: View {
             Text(title)
         }
         .frame(width: 150, height: 40, alignment: .center)
-        .background(Color.blue)
-        .foregroundColor(.white)
+        .background(Color.votuTint)
+        .foregroundColor(Color.votuText)
         .clipShape(Rectangle())
         .cornerRadius(10)
     }

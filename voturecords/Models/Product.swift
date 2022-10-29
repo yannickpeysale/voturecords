@@ -96,7 +96,14 @@ extension Product {
             price: "100",
             purchasable: false,
             url: "https://google.com",
-            images: []
+            images: [
+                ProductImage(
+                    id: 12008,
+                    src: "https://voturecords.com/wp-content/uploads/2022/10/betweenbodies-electricsleep.jpeg",
+                    name: "betweenbodies-electricsleep",
+                    alt: ""
+                )
+            ]
         )
     }
 }

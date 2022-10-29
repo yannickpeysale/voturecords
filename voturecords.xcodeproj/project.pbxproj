@@ -25,6 +25,9 @@
 		7874AB9A26BE82170062FCBA /* MockImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9926BE82170062FCBA /* MockImageDownloader.swift */; };
 		7874ABA226C3132B0062FCBA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874ABA126C3132B0062FCBA /* Category.swift */; };
 		78BAF4DA26CED996000467A5 /* VOTUURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BAF4D926CED995000467A5 /* VOTUURL.swift */; };
+		78C11E05290D19F30038B0D1 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C11E04290D19F30038B0D1 /* ProductCell.swift */; };
+		78C11E07290D1A220038B0D1 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C11E06290D1A220038B0D1 /* LoadingButton.swift */; };
+		78C11E09290D1D000038B0D1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C11E08290D1D000038B0D1 /* Color.swift */; };
 		78E9786A26C3A78600CA945D /* CategorySelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9786926C3A78600CA945D /* CategorySelectorViewModel.swift */; };
 		78E9786E26CD830800CA945D /* ProductImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9786D26CD830800CA945D /* ProductImageSlider.swift */; };
 		78F1569825063BD400B54E9A /* voturecordsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1569725063BD400B54E9A /* voturecordsApp.swift */; };
@@ -75,6 +78,9 @@
 		7874AB9926BE82170062FCBA /* MockImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageDownloader.swift; sourceTree = "<group>"; };
 		7874ABA126C3132B0062FCBA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		78BAF4D926CED995000467A5 /* VOTUURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTUURL.swift; sourceTree = "<group>"; };
+		78C11E04290D19F30038B0D1 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		78C11E06290D1A220038B0D1 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		78C11E08290D1D000038B0D1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		78E9786926C3A78600CA945D /* CategorySelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorViewModel.swift; sourceTree = "<group>"; };
 		78E9786D26CD830800CA945D /* ProductImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageSlider.swift; sourceTree = "<group>"; };
 		78F1569425063BD400B54E9A /* voturecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = voturecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				78066F6127AEC93600981AF1 /* OpenURLButton.swift */,
+				78C11E06290D1A220038B0D1 /* LoadingButton.swift */,
+				78C11E08290D1D000038B0D1 /* Color.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -174,6 +182,7 @@
 				78F1569925063BD400B54E9A /* ProductList.swift */,
 				782A63662507D73800C82C0B /* ProductListViewModel.swift */,
 				78E9786926C3A78600CA945D /* CategorySelectorViewModel.swift */,
+				78C11E04290D19F30038B0D1 /* ProductCell.swift */,
 			);
 			path = ProductList;
 			sourceTree = "<group>";
@@ -473,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78C11E07290D1A220038B0D1 /* LoadingButton.swift in Sources */,
 				78E9786E26CD830800CA945D /* ProductImageSlider.swift in Sources */,
 				7874AB9A26BE82170062FCBA /* MockImageDownloader.swift in Sources */,
 				7874AB8C26BC6D0D0062FCBA /* ProductDetails.swift in Sources */,
@@ -485,9 +495,11 @@
 				7874ABA226C3132B0062FCBA /* Category.swift in Sources */,
 				78F1569825063BD400B54E9A /* voturecordsApp.swift in Sources */,
 				780D35A727777B6D00ED3DAC /* String+HTML.swift in Sources */,
+				78C11E05290D19F30038B0D1 /* ProductCell.swift in Sources */,
 				7874AB9326BC7A400062FCBA /* ImageView.swift in Sources */,
 				78066F5F27AEBC7300981AF1 /* AboutView.swift in Sources */,
 				780D35A4277737A400ED3DAC /* MockNetworkCallHelper.swift in Sources */,
+				78C11E09290D1D000038B0D1 /* Color.swift in Sources */,
 				78E9786A26C3A78600CA945D /* CategorySelectorViewModel.swift in Sources */,
 				782A63642506980400C82C0B /* APIHelper.swift in Sources */,
 				78F156C425065E0500B54E9A /* Product.swift in Sources */,

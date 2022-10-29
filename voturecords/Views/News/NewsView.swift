@@ -17,7 +17,7 @@ struct NewsCell: View {
                 .frame(width: 80, height: 80)
                 .clipped()
             Text(news.title)
-                .foregroundColor(Color(UIColor.label))
+                .foregroundColor(Color.votuText)
                 .font(.body)
                 .fontWeight(.light)
                 .multilineTextAlignment(.leading)
@@ -26,7 +26,9 @@ struct NewsCell: View {
             Image(systemName: "chevron.right")
                 .foregroundColor(.gray)
         }
-        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
+        .background(Color.votuTint)
+        .cornerRadius(5)
     }
 }
 
@@ -44,7 +46,7 @@ struct NewsView: View {
         switch newsModels.state {
         case .loading:
             ZStack() {
-                Color(UIColor.systemBackground)
+                Color.votuBackground
                     .ignoresSafeArea(.all)
                 VStack() {
                     Image("logo")
@@ -61,26 +63,35 @@ struct NewsView: View {
             
         case .loaded:
             NavigationView() {
-                ScrollView() {
-                    VStack(spacing: 5) {
-                        ForEach((newsModels.news), id: \.self) { news in
-                            Link(destination: URL(string: news.link)!) {
-                                NewsCell(news: news)
+                ZStack() {
+                    Color.votuBackground
+                        .ignoresSafeArea(.all)
+                    ScrollView() {
+                        VStack(spacing: 5) {
+                            ForEach((newsModels.news), id: \.self) { news in
+                                Link(destination: URL(string: news.link)!) {
+                                    NewsCell(news: news)
+                                }
                             }
                         }
+                        .padding(5)
                     }
-                    .padding(5)
+                    .navigationTitle("News")
                 }
-                .navigationTitle("News")
             }
+            .foregroundColor(Color.votuText)
             
         case .error:
-            Button(action: {
-                newsModels.requestNews()
-            }) {
-                Image(systemName: "arrow.clockwise")
+            ZStack() {
+                Color.votuBackground
+                    .ignoresSafeArea(.all)
+                Button(action: {
+                    newsModels.requestNews()
+                }) {
+                    Image(systemName: "arrow.clockwise")
+                }
+                .frame(width: 40, height: 40, alignment: .center)
             }
-            .frame(width: 40, height: 40, alignment: .center)
         }
     }
 }

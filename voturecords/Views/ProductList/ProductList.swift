@@ -7,78 +7,6 @@
 
 import SwiftUI
 
-struct ProductCell: View {
-    var product: Product
-    
-    var body: some View {
-        HStack(alignment: .center,
-               spacing: 10) {
-            ImageView(image: product.images.first!.src)
-                .frame(width: 80, height: 80)
-            Text(product.name)
-                .foregroundColor(Color(UIColor.label))
-                .font(.body)
-                .fontWeight(.light)
-                .lineLimit(3)
-            Spacer()
-            Text("\(product.price)€")
-                .font(.body)
-                .fontWeight(.light)
-                .foregroundColor(Color(UIColor.label))
-            Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
-        }
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
-        .overlay(
-            Rectangle()
-                .stroke(Color.gray, lineWidth: 1)
-        )
-    }
-}
-
-struct LoadingButton: View {
-    var buttonState: LoadingButtonState
-    var buttonAction: ()->()
-    
-    init(
-        buttonState: LoadingButtonState,
-        buttonAction: @escaping () -> ()
-    ) {
-        self.buttonState = buttonState
-        self.buttonAction = buttonAction
-    }
-    
-    var body: some View {
-        switch self.buttonState {
-        case .standard:
-            Button("Load more") {
-                self.buttonAction()
-            }
-            .frame(width: 150, height: 40, alignment: .center)
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .clipShape(Rectangle())
-            .cornerRadius(10)
-            
-        case .loading:
-            Button(action: {
-                self.buttonAction()
-            }) {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-            }
-            .frame(width: 150, height: 40, alignment: .center)
-            .background(Color.gray)
-            .foregroundColor(.white)
-            .clipShape(Rectangle())
-            .cornerRadius(10)
-            .disabled(true)
-        }
-        
-        
-    }
-}
-
 struct ProductList: View {
     @ObservedObject var productModels: ProductListViewModel = ProductListViewModel()
     @ObservedObject var categoryViewModel: CategorySelectorViewModel = CategorySelectorViewModel()
@@ -95,7 +23,7 @@ struct ProductList: View {
         switch productModels.state {
         case .loading:
             ZStack() {
-                Color(UIColor.systemBackground)
+                Color.votuBackground
                     .ignoresSafeArea(.all)
                 VStack() {
                     Image("logo")
@@ -117,41 +45,45 @@ struct ProductList: View {
             }
             
         case .loaded:
+            
             NavigationView() {
-                ScrollView() {
-                    VStack(spacing: 5) {
-                        ForEach((productModels.products), id: \.self) { product in
-                            NavigationLink(destination: ProductDetails(product: product)) {
-                                ProductCell(product: product)
+                ZStack() {
+                    Color.votuBackground
+                        .ignoresSafeArea(.all)
+                    ScrollView() {
+                        VStack(spacing: 5) {
+                            ForEach((productModels.products), id: \.self) { product in
+                                NavigationLink(destination: ProductDetails(product: product)) {
+                                    ProductCell(product: product)
+                                }
+                            }
+                            if productModels.products.count % ProductListViewModel.pageSize == 0 {
+                                LoadingButton(
+                                    buttonState: self.productModels.loadingButtonState,
+                                    buttonAction: {
+                                        self.productModels.loadMoreProducts()
+                                    })
+                                .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
                             }
                         }
-                        if productModels.products.count % ProductListViewModel.pageSize == 0 {
-                            LoadingButton(
-                                buttonState: self.productModels.loadingButtonState,
-                                buttonAction: {
-                                    self.productModels.loadMoreProducts()
-                                })
-                                .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
-                        }
+                        .padding(5)
                     }
-                    .padding(5)
                 }
                 .navigationTitle("Products")
                 .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button {
-                                showingSortOrder.toggle()
-                            } label: {
-                                Label("Sort", systemImage: "arrow.up.arrow.down")
-                            }
-                            .disabled(categoryViewModel.categories.isEmpty)
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            showingSortOrder.toggle()
+                        } label: {
+                            Label("Sort", systemImage: "arrow.up.arrow.down")
                         }
+                        .disabled(categoryViewModel.categories.isEmpty)
+                    }
                 }
                 .actionSheet(isPresented: $showingSortOrder) {
                     self.generateActionSheet()
                 }
             }
-            
         case .error:
             Button(action: {
                 productModels.requestInitialProducts()
@@ -173,7 +105,7 @@ struct ProductList: View {
             )
         }
         return ActionSheet(title: Text("Select a category"),
-                   buttons: buttons + [Alert.Button.cancel()])
+                           buttons: buttons + [Alert.Button.cancel()])
     }
 }
 

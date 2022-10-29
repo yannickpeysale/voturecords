@@ -27,6 +27,10 @@ struct voturecordsApp: App {
             }
             return DefaultAPIHelper(networkCallHelper: networkCallHelper)
         })
+        
+        UITabBar.appearance().barTintColor = UIColor(Color.votuBackground)
+        UITabBar.appearance().tintColor = UIColor.red
+        UITabBar.appearance().isTranslucent = true
     }
     
     var body: some Scene {
@@ -45,7 +49,7 @@ struct voturecordsApp: App {
                         Label("About", systemImage: "info.circle")
                     }
             }
-            
+            .accentColor(Color.votuTint)
         }
     }
 }
