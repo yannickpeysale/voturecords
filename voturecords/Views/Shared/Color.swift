@@ -12,4 +12,5 @@ extension Color {
     static let votuBackground = Color("background")
     static let votuTint = Color("tint")
     static let votuText = Color("text")
+    static let votuChevron = Color("chevron")
 }

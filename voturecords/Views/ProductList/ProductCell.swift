@@ -26,7 +26,7 @@ struct ProductCell: View {
                 .fontWeight(.light)
                 .foregroundColor(Color.votuText)
             Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
+                .foregroundColor(Color.votuChevron)
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
         .background(Color.votuTint)
