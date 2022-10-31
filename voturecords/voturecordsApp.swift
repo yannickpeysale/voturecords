@@ -12,6 +12,8 @@ import Swinject
 struct voturecordsApp: App {
     static let container = Container()
     
+    @State var selectedTab = 0
+    
     init() {
         voturecordsApp.container.register(ImageDownloaderProtocol.self, factory: { _ in
             ImageDownloader()
@@ -35,19 +37,22 @@ struct voturecordsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabView {
+            TabView(selection: $selectedTab) {
                 NewsView()
                     .tabItem {
                         Label("Latest news", systemImage: "list.dash")
                     }
+                    .tag(0)
                 ProductList()
                     .tabItem {
                         Label("Products", systemImage: "record.circle")
                     }
+                    .tag(1)
                 AboutView()
                     .tabItem {
                         Label("About", systemImage: "info.circle")
                     }
+                    .tag(2)
             }
             .accentColor(Color.votuTint)
         }
