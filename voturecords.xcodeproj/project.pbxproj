@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		780D35AB2778A86100ED3DAC /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D35AA2778A86100ED3DAC /* NewsViewModel.swift */; };
 		782A63642506980400C82C0B /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A63632506980400C82C0B /* APIHelper.swift */; };
 		782A63672507D73800C82C0B /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A63662507D73800C82C0B /* ProductListViewModel.swift */; };
+		7864BAA029183F9100AC0FCB /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7864BA9F29183F9100AC0FCB /* CachedAsyncImage */; };
 		7874AB8C26BC6D0D0062FCBA /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB8B26BC6D0D0062FCBA /* ProductDetails.swift */; };
 		7874AB8F26BC731C0062FCBA /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB8E26BC731C0062FCBA /* NewsView.swift */; };
 		7874AB9126BC74D40062FCBA /* MockAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874AB9026BC74D40062FCBA /* MockAPIHelper.swift */; };
@@ -78,11 +79,13 @@
 		7874AB9926BE82170062FCBA /* MockImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageDownloader.swift; sourceTree = "<group>"; };
 		7874ABA126C3132B0062FCBA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		78BAF4D926CED995000467A5 /* VOTUURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOTUURL.swift; sourceTree = "<group>"; };
+		78BD21D327B042F50029A432 /* voturecordsRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = voturecordsRelease.entitlements; sourceTree = "<group>"; };
 		78C11E04290D19F30038B0D1 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		78C11E06290D1A220038B0D1 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		78C11E08290D1D000038B0D1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		78E9786926C3A78600CA945D /* CategorySelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorViewModel.swift; sourceTree = "<group>"; };
 		78E9786D26CD830800CA945D /* ProductImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageSlider.swift; sourceTree = "<group>"; };
+		78F0801E290DA0BF00C15336 /* voturecordsDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = voturecordsDebug.entitlements; sourceTree = "<group>"; };
 		78F1569425063BD400B54E9A /* voturecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = voturecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F1569725063BD400B54E9A /* voturecordsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voturecordsApp.swift; sourceTree = "<group>"; };
 		78F1569925063BD400B54E9A /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88637DDA909591E2192E652F /* Pods_voturecords.framework in Frameworks */,
+				7864BAA029183F9100AC0FCB /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +256,8 @@
 		78F1569625063BD400B54E9A /* voturecords */ = {
 			isa = PBXGroup;
 			children = (
+				78F0801E290DA0BF00C15336 /* voturecordsDebug.entitlements */,
+				78BD21D327B042F50029A432 /* voturecordsRelease.entitlements */,
 				780D35A527777B5900ED3DAC /* Helpers */,
 				78E9786626C3A66300CA945D /* Views */,
 				782A6362250697C900C82C0B /* Network */,
@@ -327,6 +333,9 @@
 			dependencies = (
 			);
 			name = voturecords;
+			packageProductDependencies = (
+				7864BA9F29183F9100AC0FCB /* CachedAsyncImage */,
+			);
 			productName = voturecords;
 			productReference = 78F1569425063BD400B54E9A /* voturecords.app */;
 			productType = "com.apple.product-type.application";
@@ -398,6 +407,9 @@
 				Base,
 			);
 			mainGroup = 78F1568B25063BD400B54E9A;
+			packageReferences = (
+				7864BA9E29183F9100AC0FCB /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = 78F1569525063BD400B54E9A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -666,22 +678,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = voturecords/voturecordsDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"voturecords/Preview Content\"";
 				DEVELOPMENT_TEAM = 5H55U928LZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = voturecords/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "VOTU records";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.voturecords.voturecords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "voturecords Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -691,22 +709,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = voturecords/voturecordsRelease.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"voturecords/Preview Content\"";
 				DEVELOPMENT_TEAM = 5H55U928LZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = voturecords/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "VOTU records";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.voturecords.voturecords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "voturecords Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "voturecords AppStore";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -830,6 +854,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7864BA9E29183F9100AC0FCB /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7864BA9F29183F9100AC0FCB /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7864BA9E29183F9100AC0FCB /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 78F1568C25063BD400B54E9A /* Project object */;
 }

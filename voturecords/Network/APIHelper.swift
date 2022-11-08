@@ -45,6 +45,11 @@ public protocol APIHelper {
     func requestNews(
         completion: @escaping ((APIReturnValue<[News]>) -> Void)
     ) throws
+    
+    func registerPushNotifications(
+        with token: String,
+        completion: @escaping ((APIReturnValue<Void>) -> Void)
+    )
 }
 
 /// Default implementation for APIHelper, performing calls to the Deezer API
@@ -78,10 +83,13 @@ public class DefaultAPIHelper: APIHelper {
         
         self.networkCallHelper.sendAPICall(
             with: VOTUURL.productsURL,
-            params: params) { returnValue in
+            method: .get,
+            params: params,
+            bodyParams: nil
+        ) { returnValue in
                 switch returnValue {
                 case .success(let data):
-                    NSLog(String(data: data, encoding: .utf8) ?? "Answer has incorrect encoding")
+                    Log(String(data: data, encoding: .utf8) ?? "Answer has incorrect encoding")
                     let jsonDecoder = JSONDecoder()
                     
                     guard let products = try? jsonDecoder.decode([Product].self, from: data) else {
@@ -109,7 +117,10 @@ public class DefaultAPIHelper: APIHelper {
         
         self.networkCallHelper.sendAPICall(
             with: VOTUURL.categoriesURL,
-            params: params) { returnValue in
+            method: .get,
+            params: params,
+            bodyParams: nil
+        ) { returnValue in
                 switch returnValue {
                 case .success(let data):
                     NSLog(String(data: data, encoding: .utf8) ?? "Answer has incorrect encoding")
@@ -136,7 +147,10 @@ public class DefaultAPIHelper: APIHelper {
         
         self.networkCallHelper.sendAPICall(
             with: VOTUURL.newsURL,
-            params: params) { returnValue in
+            method: .get,
+            params: params,
+            bodyParams: nil
+        ) { returnValue in
                 switch returnValue {
                 case .success(let data):
                     NSLog(String(data: data, encoding: .utf8) ?? "Answer has incorrect encoding")
@@ -154,5 +168,34 @@ public class DefaultAPIHelper: APIHelper {
                 }
             }
     }
+    
+    public func registerPushNotifications(
+        with token: String,
+        completion: @escaping ((APIReturnValue<Void>) -> Void)
+    ) {
+
+        
+        self.networkCallHelper.sendAPICall(
+            with: VOTUURL.pushRegistrationURL,
+            method: .post,
+            params: nil,
+            bodyParams: "token=\(token)&os=iOS"
+        ) { returnValue in
+                switch returnValue {
+                case .success:
+                    completion(.success(Void()))
+                case .failure(let error):
+                    completion(.failure(error))
+                    
+                }
+            }
+    }
 }
 
+
+func Log(_ format:String, _ args:CVarArg...) {
+    let output = withVaList(args, { (p) -> NSString in
+        NSString(format: format, arguments: p)
+    }) as String
+    print( output )
+}

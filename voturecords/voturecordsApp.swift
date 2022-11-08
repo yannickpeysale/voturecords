@@ -10,6 +10,8 @@ import Swinject
 
 @main
 struct voturecordsApp: App {
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    
     static let container = Container()
     
     @State var selectedTab = 0
@@ -33,6 +35,16 @@ struct voturecordsApp: App {
         UITabBar.appearance().barTintColor = UIColor(Color.votuBackground)
         UITabBar.appearance().tintColor = UIColor.red
         UITabBar.appearance().isTranslucent = true
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (allowed, error) in
+            if allowed {
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            } else {
+                
+            }
+        }
     }
     
     var body: some Scene {
@@ -56,5 +68,34 @@ struct voturecordsApp: App {
             }
             .accentColor(Color.votuTint)
         }
+    }
+}
+
+//*** Implement App delegate ***//
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        return true
+    }
+    //No callback in simulator
+    //-- must use device to get valid push token
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        guard let apiHelper = voturecordsApp.container.resolve(APIHelper.self) else {
+            NSLog("Couldn't resolve apiHelper : specifying a default one")
+            return
+        }
+        apiHelper.registerPushNotifications(with: token) { result in
+            switch result {
+            case .success :
+                NSLog("Registration success")
+            case .failure(let error):
+                NSLog(error.localizedDescription)
+            }
+        }
+        print(deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error.localizedDescription)
     }
 }

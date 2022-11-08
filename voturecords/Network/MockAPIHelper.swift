@@ -100,4 +100,11 @@ public class MockAPIHelper: APIHelper {
         )
         )
     }
+    
+    public func registerPushNotifications(
+        with token: String,
+        completion: @escaping ((APIReturnValue<Void>) -> Void)
+    ) {
+        completion(.success(Void()))
+    }
 }
