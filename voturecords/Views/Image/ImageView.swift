@@ -9,10 +9,12 @@ import SwiftUI
 
 struct ImageView: View {
     let image: String
+    let contentMode: ContentMode
     @ObservedObject var imageViewModel: ImageViewModel
     
-    public init(image: String) {
+    public init(image: String, contentMode: ContentMode = .fill) {
         self.image = image
+        self.contentMode = contentMode
         self.imageViewModel = ImageViewModel(image: image)
         self.imageViewModel.downloadImage()
     }
@@ -26,7 +28,7 @@ struct ImageView: View {
         case .loaded(let loadedImage):
             Image(uiImage: loadedImage)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                .aspectRatio(contentMode: contentMode)
                 
         case .error:
             Button(action: {

@@ -51,23 +51,28 @@ struct ProductList: View {
                     Color.votuBackground
                         .ignoresSafeArea(.all)
                     ScrollView() {
-                        VStack(spacing: 5) {
+                        LazyVGrid(
+                          columns: [
+                            GridItem(.flexible()),
+                            GridItem(.flexible())
+                          ], spacing: 15
+                        ) {
                             ForEach((productModels.products), id: \.self) { product in
                                 NavigationLink(destination: ProductDetails(product: product)) {
                                     ProductCell(product: product)
                                 }
                             }
-                            if productModels.products.count % ProductListViewModel.pageSize == 0 {
-                                LoadingButton(
-                                    buttonState: self.productModels.loadingButtonState,
-                                    buttonAction: {
-                                        self.productModels.loadMoreProducts()
-                                    })
-                                .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
-                            }
                         }
-                        .padding(5)
+                        if productModels.products.count % ProductListViewModel.pageSize == 0 {
+                            LoadingButton(
+                                buttonState: self.productModels.loadingButtonState,
+                                buttonAction: {
+                                    self.productModels.loadMoreProducts()
+                                })
+                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
+                        }
                     }
+                    .padding(5)
                 }
                 .navigationTitle("Products")
                 .toolbar {

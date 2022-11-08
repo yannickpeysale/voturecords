@@ -6,29 +6,34 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct ProductCell: View {
     var product: Product
     
     var body: some View {
-        HStack(alignment: .center,
-               spacing: 10) {
-            ImageView(image: product.images.first!.src)
-                .frame(width: 80, height: 80)
+        VStack(alignment: .center,
+               spacing: 5) {
+            CachedAsyncImage(url: URL(string: product.images.first!.src)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } placeholder: {
+                ProgressView()
+            }
             Text(product.name)
                 .foregroundColor(Color.votuText)
                 .font(.body)
-                .fontWeight(.light)
-                .lineLimit(3)
+                .fontWeight(.medium)
+                .lineLimit(2)
+                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
             Spacer()
             Text("\(product.price)€")
                 .font(.body)
                 .fontWeight(.light)
                 .foregroundColor(Color.votuText)
-            Image(systemName: "chevron.right")
-                .foregroundColor(Color.votuChevron)
         }
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
         .background(Color.votuTint)
         .cornerRadius(5)
     }
