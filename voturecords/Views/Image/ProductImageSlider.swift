@@ -20,7 +20,7 @@ struct ProductImageSlider: View {
         if images.count > 1 {
             TabView {
                 ForEach(images, id: \.self) { image in
-                    ImageView(image: image.src)
+                    ImageView(image: image.src, contentMode: .fit)
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 40, trailing: 5))
                     
                 }
